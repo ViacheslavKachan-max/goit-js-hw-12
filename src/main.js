@@ -27,7 +27,8 @@ loadMoreBtn.addEventListener('click', onLoadMore);
 async function onSearch(event) {
   event.preventDefault();
 
-  searchQuery = event.currentTarget.elements['search-text'].value.trim();
+  searchQuery =
+    event.currentTarget.elements['search-text'].value.trim();
 
   if (!searchQuery) {
     iziToast.warning({
@@ -67,7 +68,8 @@ async function onSearch(event) {
       hideLoadMoreButton();
 
       iziToast.info({
-        message: "We're sorry, but you've reached the end of search results.",
+        message:
+          "We're sorry, but you've reached the end of search results.",
         position: 'topRight',
       });
     }
@@ -95,11 +97,14 @@ async function onLoadMore() {
 
     const totalPages = Math.ceil(data.totalHits / perPage);
 
-    if (page >= totalPages) {
+    if (page < totalPages) {
+      showLoadMoreButton();
+    } else {
       hideLoadMoreButton();
 
       iziToast.info({
-        message: "We're sorry, but you've reached the end of search results.",
+        message:
+          "We're sorry, but you've reached the end of search results.",
         position: 'topRight',
       });
     }
@@ -116,7 +121,9 @@ async function onLoadMore() {
 }
 
 function smoothScroll() {
-  const card = document.querySelector('.gallery-item').getBoundingClientRect();
+  const card = document
+    .querySelector('.gallery-item')
+    .getBoundingClientRect();
 
   window.scrollBy({
     top: card.height * 2,
