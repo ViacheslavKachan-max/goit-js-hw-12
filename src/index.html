@@ -7,16 +7,26 @@
     <title>Vanilla App Template</title>
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
-  <body>
-    <load src="./partials/header.html" icon-path="img/sprite.svg#logo" />
+  
+     <body>
+    <form class="form">
+      <input
+        type="text"
+        name="search-text"
+        placeholder="Search images..."
+        required
+      />
 
-    <main>
-      <!-- Loads the specified .html file -->
-      <load src="./partials/vite-promo.html" />
-      <load src="./partials/badges.html" />
-    </main>
+      <button type="submit">Search</button>
+    </form>
 
-    <load src="./partials/footer.html" />
+    <ul class="gallery"></ul>
+
+    <button class="load-more hidden" type="button">
+      Load more
+    </button>
+
+    <span class="loader hidden"></span>
 
     <script type="module" src="./main.js"></script>
   </body>
